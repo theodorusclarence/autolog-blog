@@ -25,14 +25,11 @@ jobs:
           echo $cat > $d
 
       - name: Commit changes
-        run: |
-          git config --local user.email "theodorusclarence@gmail.com"
-          git config --local user.name "Theodorus Clarence"
-          git add .
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'content: update'
 
-          git commit -m "adding output"
-
-      - name: push
+      - name: Push
         uses: ad-m/github-push-action@v0.5.0
         with:
           force: true
