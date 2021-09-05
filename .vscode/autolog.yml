@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Fetch API Data 📦
-        uses: JamesIves/fetch-api-data-action@releases/v1
+        uses: JamesIves/fetch-api-data-action@1.0.19
         with:
           ENDPOINT: https://theodorusclarence.com/api/content
           CONFIGURATION: '{ "method": "GET" }'
