@@ -18,6 +18,7 @@ jobs:
           CONFIGURATION: '{ "method": "GET" }'
 
       - name: Save output to folder
+        run: |
           d=`date '+%Y-%m-%dT%H:%M:%SZ'`
           cat=`cat fetch-api-data-action/data.json`
           echo $cat > $d
