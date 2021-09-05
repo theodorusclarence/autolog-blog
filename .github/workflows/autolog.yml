@@ -1,11 +1,11 @@
 name: Autologger
 
 push:
-    branches:
-      - master
-      
+  branches:
+    - master
+
   schedule:
-  - cron: "*/2 * * * *"
+    - cron: '*/2 * * * *'
 
 jobs:
   refresh-feed:
@@ -14,7 +14,7 @@ jobs:
       - name: Fetch API Data 📦
         uses: JamesIves/fetch-api-data-action@1.0.19
         with:
-          ENDPOINT: https://theodorusclarence.com/api/content
+          ENDPOINT: https://jsonplaceholder.typicode.com/todos/1
           CONFIGURATION: '{ "method": "GET" }'
 
       - name: Save output to folder
