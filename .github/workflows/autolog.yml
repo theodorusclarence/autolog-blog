@@ -9,3 +9,9 @@ jobs:
         with:
           ENDPOINT: https://theodorusclarence.com/api/content
           CONFIGURATION: '{ "method": "GET" }'
+
+      - name: Check output
+        run: |
+          d=`ls fetch-api-data-action`
+          echo $d
+          echo $d > OUTPUT
