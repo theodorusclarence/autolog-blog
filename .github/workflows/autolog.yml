@@ -11,6 +11,10 @@ on:
 jobs:
   refresh-feed:
     runs-on: ubuntu-latest
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+
     steps:
       - name: Fetch API Data 📦
         uses: JamesIves/fetch-api-data-action@1.0.19
