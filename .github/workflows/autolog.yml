@@ -1,5 +1,12 @@
-name: Refresh Feed
-on: [push]
+name: Autologger
+
+push:
+    branches:
+      - master
+      
+  schedule:
+  - cron: "*/2 * * * *"
+
 jobs:
   refresh-feed:
     runs-on: ubuntu-latest
@@ -10,8 +17,22 @@ jobs:
           ENDPOINT: https://theodorusclarence.com/api/content
           CONFIGURATION: '{ "method": "GET" }'
 
-      - name: Check output
+      - name: Save output to folder
+          d=`date '+%Y-%m-%dT%H:%M:%SZ'`
+          cat=`cat fetch-api-data-action/data.json`
+          echo $cat > $d
+
+      - name: Commit changes
         run: |
-          d=`cat fetch-api-data-action/data.json`
-          echo $d
-          echo $d > OUTPUT
+          git config --local user.email "theodorusclarence@gmail.com"
+          git config --local user.name "Theodorus Clarence"
+          git add .
+
+          git commit -m "adding output"
+
+      - name: push
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          force: true
+          directory: '.'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
