@@ -12,6 +12,6 @@ jobs:
 
       - name: Check output
         run: |
-          d=`ls fetch-api-data-action`
+          d=`cat fetch-api-data-action/data.json`
           echo $d
           echo $d > OUTPUT
